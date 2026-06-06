@@ -34,13 +34,13 @@
         }
     </script>
     <style>
-        body {
-            background-color: #141414;
+        html, body {
+            background-color: #141414 !important;
             color: #ffffff;
             font-family: 'Inter', 'Hind Siliguri', sans-serif;
         }
         .gradient-glow {
-            background: radial-gradient(circle at 50% -20%, rgba(229, 9, 20, 0.15) 0%, rgba(20, 20, 20, 0) 60%);
+            background: #141414 radial-gradient(circle at 50% -20%, rgba(229, 9, 20, 0.3) 0%, #141414 70%) !important;
         }
         .glass-panel {
             background: rgba(28, 28, 28, 0.45);
@@ -49,7 +49,7 @@
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between gradient-glow">
+<body class="min-h-screen flex flex-col justify-between gradient-glow bg-[#141414]">
 
     <!-- Header / Navbar -->
     <header class="w-full max-w-7xl mx-auto px-6 py-6 flex justify-between items-center z-10">
@@ -267,4 +267,4 @@
     </footer>
 
 </body>
-  </html>
+    </html>
