@@ -1,269 +1,489 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="bn" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All TV Live - সরাসরি আপনার অ্যান্ড্রয়েড ফোনে লাইভ টিভি</title>
+    <title>All Tv live - শ্রেষ্ঠ অ্যান্ড্রয়েড আইপিটিভি প্লেয়ার</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome for beautiful icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;750;800&display=swap" rel="stylesheet">
-    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         brand: {
-                            red: '#E50914',
-                            darkRed: '#B81D24',
-                            darkBg: '#141414',
-                            grayLight: '#AAAAAA',
-                            glass: 'rgba(28, 28, 28, 0.6)'
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#312e81',
+                        },
+                        dark: {
+                            background: '#09090b',
+                            card: '#18181b',
+                            text: '#f4f4f5'
                         }
                     },
                     fontFamily: {
-                        sans: ['Inter', 'Hind Siliguri', 'sans-serif'],
+                        sans: ['Outfit', 'Inter', 'SolaimanLipi', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        html, body {
-            background-color: #141414 !important;
-            color: #ffffff;
-            font-family: 'Inter', 'Hind Siliguri', sans-serif;
+        body {
+            font-family: 'Outfit', 'Hind Siliguri', 'Inter', sans-serif;
+            background-color: #09090b;
         }
-        .gradient-glow {
-            background: #141414 radial-gradient(circle at 50% -20%, rgba(229, 9, 20, 0.3) 0%, #141414 70%) !important;
+        .gradient-text {
+            background: linear-gradient(135deg, #a5b4fc 0%, #6366f1 50%, #4f46e5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .glass-panel {
-            background: rgba(28, 28, 28, 0.45);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        .gradient-border {
+            position: relative;
+            border-radius: 1rem;
+            background: linear-gradient(135deg, #27272a, #09090b);
+            padding: 1px;
+        }
+        .gradient-border::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 1rem;
+            padding: 1.5px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.4), rgba(165, 180, 252, 0.1));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between gradient-glow bg-[#141414]">
+<body class="text-gray-300 antialiased overflow-x-hidden">
 
-    <!-- Header / Navbar -->
-    <header class="w-full max-w-7xl mx-auto px-6 py-6 flex justify-between items-center z-10">
-        <div class="flex items-center space-x-3">
-            <div class="w-10 h-10 bg-brand-red rounded-xl flex items-center justify-center shadow-lg shadow-brand-red/30">
-                <i class="fa-solid fa-play text-white text-lg"></i>
+    <!-- Header Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-opacity-70 bg-dark-background backdrop-blur-md border-b border-zinc-800/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-400 flex items-center justify-center shadow-lg shadow-brand-500/20">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M7 4v16M17 4v16M3 8h18M3 16h18" />
+                    </svg>
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold text-white tracking-tight">All Tv <span class="text-brand-500">live</span></span>
+                </div>
             </div>
-            <span class="text-xl font-extrabold tracking-wider text-white">ALL <span class="text-brand-red">TV LIVE</span></span>
+            
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#features" class="hover:text-white transition-colors duration-200">বৈশিষ্ট্যসমূহ</a>
+                <a href="#how-to-install" class="hover:text-white transition-colors duration-200">কীভাবে ইনস্টল করবেন</a>
+                <a href="#how-it-works" class="hover:text-white transition-colors duration-200">প্লেলিস্ট সেটআপ</a>
+            </nav>
+
+            <div>
+                <a href="#download" class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-semibold bg-brand-600 text-white hover:bg-brand-500 hover:shadow-lg hover:shadow-brand-500/20 active:scale-95 transition-all duration-200 gap-2">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                    </svg>
+                    ডাউনলোড অ্যাপ
+                </a>
+            </div>
         </div>
-        <a href="https://github.com/tanim254/All-tv-live-website" target="_blank" class="text-brand-grayLight hover:text-white transition duration-300">
-            <i class="fa-brands fa-github text-2xl"></i>
-        </a>
     </header>
 
-    <!-- Main Content -->
-    <main class="w-full max-w-7xl mx-auto px-6 py-12 flex-grow flex flex-col lg:flex-row items-center justify-center gap-12">
-        
-        <!-- Left Column: Copy & Downloading -->
-        <div class="w-full lg:w-1/2 flex flex-col space-y-8 text-center lg:text-left">
-            <div class="space-y-4">
-                <span class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-brand-red/10 border border-brand-red/30 text-brand-red text-sm font-semibold tracking-wide w-fit mx-auto lg:mx-0">
-                    <span class="flex h-2 w-2 relative">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-red opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-red"></span>
-                    </span>
-                    <span>সর্বশেষ সংস্করণ v1.0 রিলিজ করা হয়েছে</span>
-                </span>
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden">
+        <!-- Radial backlights -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute top-10 right-10 w-72 h-72 bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+            <!-- Left Hero Content -->
+            <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                <div class="inline-flex items-center space-x-2 bg-zinc-900/80 border border-zinc-800 px-4 py-2 rounded-full text-xs font-semibold text-brand-100 backdrop-blur-md">
+                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    <span>সর্বশেষ ভি ৩.০ রিলিজ হয়েছে</span>
+                </div>
                 
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
-                    আপনার ফোনে সরাসরি <br class="hidden md:inline">      
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-red via-red-500 to-orange-400">লাইভ টিভি চ্যানেল</span>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                    স্মার্ট অ্যান্ড আল্ট্রা-ফাস্ট <br>
+                    <span class="gradient-text">IPTV স্ট্রিমিং প্লেয়ার</span>
                 </h1>
                 
-                <p class="text-lg md:text-xl text-brand-grayLight max-w-2xl mx-auto lg:mx-0">
-                    কোন ঝামেলা ছাড়াই আপনার প্রিয় সকল বাংলাদেশি এবং ইন্টারন্যাশনাল আইপিটিভি (IPTV) চ্যানেলগুলো সরাসরি হাই-কোয়ালিটি স্ট্রিমিংয়ে উপভোগ করুন। সম্পূর্ণ ফ্রী এবং আকর্ষণীয় ইউজার ইন্টারফেস সমৃদ্ধ একটি অ্যাপ।
+                <p class="text-lg text-gray-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
+                    আপনার অ্যান্ড্রয়েড ডিভাইসে সরাসরি লাইভ টিভি, সিনেমা এবং সিরিজ উপভোগ করুন। M3U প্লেলিস্ট, Xtream Codes API এবং সুনির্দিষ্ট EPG গাইড সমর্থন সহ দেশের শ্রেষ্ঠ IPTV দেখার অভিজ্ঞতা পান সম্পূর্ণ বাফারিং ছাড়া।
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="#download" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl text-base font-bold bg-gradient-to-r from-brand-600 to-indigo-600 text-white hover:from-brand-500 hover:to-indigo-500 shadow-xl shadow-brand-500/25 hover:shadow-brand-500/35 active:scale-95 transition-all duration-200 gap-3">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                        এপ্লিকেশন ডাউনলোড করুন (APK)
+                    </a>
+                    
+                    <a href="#features" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl text-base font-semibold bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:bg-zinc-800 hover:border-zinc-700 transition-all duration-200">
+                        ফিচার সমূহ দেখুন
+                    </a>
+                </div>
+
+                <!-- Info tags -->
+                <div class="pt-6 grid grid-cols-3 gap-4 border-t border-zinc-800 max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
+                    <div>
+                        <div class="text-2xl font-black text-white">4K / HD</div>
+                        <div class="text-xs text-zinc-500">স্ট্রিমিং কোয়ালিটি</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-black text-white">0s</div>
+                        <div class="text-xs text-zinc-500">ইনস্ট্যান্ট লোডিং</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-black text-white">100%</div>
+                        <div class="text-xs text-zinc-500">নিরাপদ ও বিজ্ঞাপন-মুক্ত</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Hero Phone / Display Mockup -->
+            <div class="lg:col-span-5 flex justify-center relative">
+                <!-- Outer shadow effects -->
+                <div class="absolute inset-0 bg-brand-500/10 rounded-full blur-[80px] pointer-events-none"></div>
+                
+                <div class="w-full max-w-[340px] aspect-[9/18.5] bg-black p-3.5 rounded-[44px] shadow-2xl relative border-[4px] border-zinc-800 overflow-hidden">
+                    <!-- Sensor notch -->
+                    <div class="absolute top-2.5 left-1/2 -translate-x-1/2 w-28 h-6 bg-black rounded-2xl z-20 flex items-center justify-around px-4">
+                        <div class="w-2.5 h-2.5 rounded-full bg-zinc-800"></div>
+                        <div class="w-12 h-1 bg-zinc-800 rounded-full"></div>
+                    </div>
+                    
+                    <!-- Screen Container with Inner Mockup -->
+                    <div class="w-full h-full rounded-[32px] overflow-hidden bg-zinc-950 relative flex flex-col justify-between p-4">
+                        <!-- Top status bar -->
+                        <div class="flex justify-between items-center text-[10px] text-zinc-400 font-semibold px-2 pt-4">
+                            <span>09:41</span>
+                            <div class="flex items-center space-x-1.5">
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.9-1.9C9.13 19.64 10.53 20 12 20c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
+                                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                            </div>
+                        </div>
+
+                        <!-- Mini App View Layout -->
+                        <div class="flex-1 mt-4 flex flex-col justify-start space-y-4">
+                            <!-- Banner -->
+                            <div class="h-28 rounded-2xl bg-gradient-to-br from-indigo-900 to-zinc-900 p-3 flex flex-col justify-between border border-zinc-800">
+                                <div class="text-[9px] text-brand-300 font-bold tracking-wider">LIVE MATCH</div>
+                                <div class="text-xs font-bold text-white leading-tight">FIFA World Cup Qualifying Round</div>
+                                <div class="flex justify-between items-center text-[9px] text-zinc-400">
+                                    <span>Server Alpha (Fast)</span>
+                                    <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                                </div>
+                            </div>
+
+                            <!-- Carousel Tab -->
+                            <div class="flex space-x-1 overflow-x-hidden text-[9px]">
+                                <span class="bg-brand-600 text-white px-2.5 py-1 rounded-full font-bold">লাইভ টিভি</span>
+                                <span class="bg-zinc-900 text-zinc-400 px-2.5 py-1 rounded-full">সিনেমা</span>
+                                <span class="bg-zinc-900 text-zinc-400 px-2.5 py-1 rounded-full">টিভি সিরিজ</span>
+                            </div>
+
+                            <!-- Channel List Mock -->
+                            <div class="space-y-2 flex-1 overflow-hidden">
+                                <div class="bg-zinc-900/60 p-2 rounded-xl flex items-center justify-between border border-zinc-800/40">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-7 h-7 rounded-lg bg-zinc-800 flex items-center justify-center text-xs font-bold text-indigo-400">T1</div>
+                                        <div>
+                                            <div class="text-[10px] font-bold text-white">T Sports HD</div>
+                                            <div class="text-[8px] text-zinc-500">Bangladesh vs New Zealand</div>
+                                        </div>
+                                    </div>
+                                    <svg class="w-3.5 h-3.5 text-brand-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/></svg>
+                                </div>
+                                <div class="bg-zinc-900/60 p-2 rounded-xl flex items-center justify-between border border-zinc-800/40">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-7 h-7 rounded-lg bg-zinc-800 flex items-center justify-center text-xs font-bold text-indigo-400">G</div>
+                                        <div>
+                                            <div class="text-[10px] font-bold text-white">GTV HD</div>
+                                            <div class="text-[8px] text-zinc-500">Sports & Live Matches</div>
+                                        </div>
+                                    </div>
+                                    <svg class="w-3.5 h-3.5 text-zinc-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/></svg>
+                                </div>
+                                <div class="bg-zinc-900/60 p-2 rounded-xl flex items-center justify-between border border-zinc-800/40">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-7 h-7 rounded-lg bg-zinc-800 flex items-center justify-center text-xs font-bold text-indigo-400">S1</div>
+                                        <div>
+                                            <div class="text-[10px] font-bold text-white">Sony Sports Ten 1</div>
+                                            <div class="text-[8px] text-zinc-500">International Live Feed</div>
+                                        </div>
+                                    </div>
+                                    <svg class="w-3.5 h-3.5 text-zinc-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/></svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Footer Control and Navigation of device -->
+                        <div class="pt-2 border-t border-zinc-900 flex justify-around text-zinc-400 text-[10px]">
+                            <span class="text-brand-500 font-bold">হোম</span>
+                            <span>সার্চ</span>
+                            <span>প্রিয় চ্যানেল</span>
+                            <span>সেটিংস</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key App Features -->
+    <section id="features" class="py-24 bg-zinc-950/40 border-t border-b border-zinc-800/40 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center space-y-4 max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                    কেন আমাদের <span class="text-brand-500">আইপিটিভি</span> প্লেয়ারটি সেরা?
+                </h2>
+                <div class="w-16 h-1 bg-brand-600 mx-auto rounded-full"></div>
+                <p class="text-gray-400 leading-relaxed text-sm sm:text-base">
+                    আমাদের নিখুঁত ডিজাইন এবং আল্ট্রা-প্রো অপ্টিমাইজড প্লেব্যাক ইঞ্জিন আপনাকে যেকোনো জায়গা থেকে বাফারিং বিহীন স্ট্রিমিং করতে সাহায্য করবে।
                 </p>
             </div>
 
-            <!-- Features Highlights -->
-            <div class="grid grid-cols-2 gap-4 max-w-md mx-auto lg:mx-0">
-                <div class="flex items-center space-x-3 text-left">
-                    <div class="text-brand-red text-lg"><i class="fa-solid fa-circle-check"></i></div>
-                    <span class="text-gray-300 font-medium">স্মুথ ফাস্ট বাফারিং</span>
-                </div>
-                <div class="flex items-center space-x-3 text-left">
-                    <div class="text-brand-red text-lg"><i class="fa-solid fa-circle-check"></i></div>
-                    <span class="text-gray-300 font-medium">সহজ অঙ্গভঙ্গি নিয়ন্ত্রণ</span>
-                </div>
-                <div class="flex items-center space-x-3 text-left">
-                    <div class="text-brand-red text-lg"><i class="fa-solid fa-circle-check"></i></div>
-                    <span class="text-gray-300 font-medium">অটো আপডেট তালিকা</span>
-                </div>
-                <div class="flex items-center space-x-3 text-left">
-                    <div class="text-brand-red text-lg"><i class="fa-solid fa-circle-check"></i></div>
-                    <span class="text-gray-300 font-medium">সম্পূর্ণ ফ্রী সার্ভিস</span>
-                </div>
-            </div>
-
-            <!-- CTA Download Buttons -->
-            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
-                <a href="https://github.com/tanim254/All-tv-live-website/releases/download/v1.0/All.Tv.Live.apk" 
-                   download 
-                   class="w-full sm:w-auto px-8 py-4 bg-brand-red hover:bg-brand-darkRed text-white font-bold rounded-2xl flex items-center justify-center space-x-3 shadow-lg shadow-brand-red/30 transform hover:-translate-y-1 transition duration-300">
-                    <i class="fa-solid fa-download text-lg"></i>
-                    <span>ডাউনলোড করুন (APK)</span>
-                </a>
-                <a href="#install-guide" 
-                   class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/15 text-white font-semibold rounded-2xl flex items-center justify-center space-x-2 border border-white/10 transition duration-300">
-                    <i class="fa-solid fa-circle-info"></i>
-                    <span>কিভাবে ইনস্টল করবেন?</span>
-                </a>
-            </div>
-
-            <div class="text-xs text-brand-grayLight/70 flex items-center justify-center lg:justify-start space-x-4">
-                <span><i class="fa-solid fa-shield-halved text-green-500 mr-1"></i> গুগল প্লে প্রোটেক্ট নিরাপদ</span>
-                <span>•</span>
-                <span>সাইজ: ~১২ এমবি</span>
-            </div>
-        </div>
-
-        <!-- Right Column: Simulated App Visual -->
-        <div class="w-full lg:w-1/2 flex justify-center items-center relative py-12">
-            <!-- Glow background decoration -->
-            <div class="absolute w-72 h-72 bg-brand-red/20 rounded-full blur-[80px] -z-10 animate-pulse"></div>
-            
-            <!-- Simulated Android Phone Frame -->
-            <div class="w-[280px] h-[580px] rounded-[42px] border-[8px] border-zinc-800 bg-neutral-950 shadow-2xl relative overflow-hidden flex flex-col">
-                <!-- Camera Notch -->
-                <div class="absolute top-4 left-1/2 transform -translate-x-1/2 w-28 h-6 bg-zinc-800 rounded-full z-20 flex items-center justify-center">
-                    <div class="w-3.5 h-3.5 rounded-full bg-neutral-900 mr-2 border border-zinc-700/50"></div>
-                    <div class="w-2 h-2 rounded-full bg-neutral-900 border border-zinc-700/50"></div>
-                </div>
-
-                <!-- Top bar inside phone -->
-                <div class="pt-12 px-5 flex justify-between items-center z-10 w-full bg-neutral-950/90 pb-3">
-                    <div class="flex items-center space-x-1.5">
-                        <i class="fa-solid fa-tv text-brand-red text-sm"></i>
-                        <span class="text-xs font-bold tracking-tight text-white">ALL TV</span>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="gradient-border p-6 flex flex-col space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-brand-500">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
                     </div>
-                    <div class="flex items-center space-x-1 text-[10px] text-zinc-400">
-                        <i class="fa-solid fa-wifi"></i>
-                        <span class="font-semibold">5G</span>
-                    </div>
+                    <h3 class="text-xl font-bold text-white">লাইভ স্পোর্টস ও টিভি</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        টি-স্পোর্টস, জিটিভি, স্টার স্পোর্টস সহ যেকোনো লাইভ খেলা এবং খবরের চ্যানেল সরাসরি ৪কে (4K/HD) কোয়ালিটিতে স্ট্রিমিং করুন। 
+                    </p>
                 </div>
 
-                <!-- App Screen Content Simulated Screen (Live Streaming View) -->
-                <div class="flex-grow flex flex-col p-4 space-y-4 overflow-y-auto">
-                    <!-- Carousel Slider mock -->
-                    <div class="relative h-28 w-full rounded-2xl overflow-hidden glass-panel flex-shrink-0 flex items-center justify-center">
-                        <div class="absolute inset-0 bg-cover bg-center opacity-60" style="background-image: url('https://images.unsplash.com/photo-1542281286-9e0a16bb7366?auto=format&fit=crop&w=500&q=80')"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-                        <div class="absolute bottom-2.5 left-3 text-left">
-                            <span class="bg-brand-red text-[8px] px-1.5 py-0.5 rounded font-black uppercase text-white animate-pulse">LIVE</span>
-                            <p class="text-xs font-bold text-white mt-1">ICC Cricket World Cup</p>
-                        </div>
+                <!-- Feature 2 -->
+                <div class="gradient-border p-6 flex flex-col space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-brand-500">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
                     </div>
-
-                    <!-- Category Title -->
-                    <div class="flex justify-between items-center py-1">
-                        <h3 class="text-xs font-extrabold tracking-wide text-zinc-300">TV CATEGORIES</h3>
-                        <span class="text-[9px] text-brand-red font-bold">See All</span>
-                    </div>
-
-                    <!-- App Channel Grid Mocks -->
-                    <div class="grid grid-cols-2 gap-3">
-                        <div class="glass-panel p-2.5 rounded-xl flex flex-col items-center justify-center space-y-2 border border-white/5 hover:border-brand-red/30 transition duration-300">
-                            <div class="w-10 h-10 bg-zinc-900 rounded-lg flex items-center justify-center border border-zinc-800">
-                                <i class="fa-solid fa-newspaper text-emerald-500 text-lg"></i>
-                            </div>
-                            <span class="text-[10px] font-bold text-white">News Channels</span>
-                        </div>
-                        <div class="glass-panel p-2.5 rounded-xl flex flex-col items-center justify-center space-y-2 border border-white/5 hover:border-brand-red/30 transition duration-300">
-                            <div class="w-10 h-10 bg-zinc-900 rounded-lg flex items-center justify-center border border-zinc-800">
-                                <i class="fa-solid fa-baseball-bat-ball text-orange-500 text-lg"></i>
-                            </div>
-                            <span class="text-[10px] font-bold text-white">Sports Channels</span>
-                        </div>
-                        <div class="glass-panel p-2.5 rounded-xl flex flex-col items-center justify-center space-y-2 border border-white/5 hover:border-brand-red/30 transition duration-300">
-                            <div class="w-10 h-10 bg-zinc-900 rounded-lg flex items-center justify-center border border-zinc-800">
-                                <i class="fa-solid fa-masks-theater text-purple-500 text-lg"></i>
-                            </div>
-                            <span class="text-[10px] font-bold text-white">Entertainment</span>
-                        </div>
-                        <div class="glass-panel p-2.5 rounded-xl flex flex-col items-center justify-center space-y-2 border border-white/5 hover:border-brand-red/30 transition duration-300">
-                            <div class="w-10 h-10 bg-zinc-900 rounded-lg flex items-center justify-center border border-zinc-800">
-                                <i class="fa-solid fa-clapperboard text-red-500 text-lg"></i>
-                            </div>
-                            <span class="text-[10px] font-bold text-white">Movie Channels</span>
-                        </div>
-                    </div>
-
-                    <!-- Simulated video player feature banner at bottom -->
-                    <div class="bg-gradient-to-r from-red-950/40 to-neutral-900 rounded-xl p-3 border border-brand-red/10 mt-auto flex items-center justify-between">
-                        <div class="text-left">
-                            <h4 class="text-[9px] font-semibold text-brand-red tracking-wider">SWIPE GESTURES</h4>
-                            <p class="text-[10px] text-zinc-400">স্ক্রিনের বামে ও ডানে ব্রাইটনেস এবং ভলিউম নিয়ন্ত্রণ করুন সহজে</p>
-                        </div>
-                    </div>
+                    <h3 class="text-xl font-bold text-white font-siliguri">সহজ প্লেলিস্ট লোড</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        সহজেই আপনার M3U লিঙ্ক, M3U ফাইল বা Xtream কোডস লগইন যুক্ত করে হাজার হাজার ক্যাটাগরির লাইভ চ্যানেল এবং মুভি লোড করুন।
+                    </p>
                 </div>
-            </div>
-            
-            <!-- Side visual indicator absolute -->
-            <div class="hidden md:flex flex-col space-y-4 absolute -right-8 bottom-12 glass-panel p-4 rounded-2xl max-w-[180px] border border-white/10">
-                <div class="flex items-center space-x-3 text-left">
-                    <span class="w-2 h-2 rounded-full bg-green-500"></span>
-                    <p class="text-xs font-bold text-zinc-200">স্মার্ট ভলিউম জেস্টার</p>
+
+                <!-- Feature 3 -->
+                <div class="gradient-border p-6 flex flex-col space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-brand-500">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">বুকমার্ক বা ফেভারিট অপশন</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        আপনার পছন্দের চ্যানেল এবং ভিডিওগুলোকে এক ক্লিকে "Favorited" লিঙ্কে যুক্ত করুন যাতে পরবর্তীতে খুব দ্রুত অ্যাক্সেস করতে পারেন।
+                    </p>
                 </div>
-                <hr class="border-zinc-800">
-                <div class="flex items-center space-x-3 text-left">
-                    <span class="w-2 h-2 rounded-full bg-cyan-500"></span>
-                    <p class="text-xs font-bold text-zinc-200">স্মার্ট ব্রাইটনেস জেস্টার</p>
+
+                <!-- Feature 4 -->
+                <div class="gradient-border p-6 flex flex-col space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-brand-500">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">স্মার্ট ভিডিও প্লেয়ার</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        ভিডিও প্লেয়ার স্ক্রিনে ব্রাইটনেস, ভলিউম কন্ট্রোল, লাইভ অ্যাসপেক্ট রেশিও স্কেলিং, এক্সক্লুসিভ ব্যাক বাটন এবং ইজি সোয়াইপ জেসচার সাপোর্ট।
+                    </p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="gradient-border p-6 flex flex-col space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-brand-500">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">ফিফা স্পেশাল ফোল্ডার</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        ফিফা ফুটবল ফুটবল বিশ্বকাপ ও ম্যাচ ফোল্ডার যার ব্যাক বাটন কাজ করবে অত্যন্ত চমৎকারভাবে, আগের স্ক্রিনে নিখুঁতভাবে ফেরত নিয়ে যাবে।
+                    </p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="gradient-border p-6 flex flex-col space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-brand-500">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">নিরাপদ ও স্থানীয় স্টোরেজ</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        রুম ডাটাবেস এর মাধ্যমে সম্পূর্ণ অফলাইন এবং নির্ভরযোগ্য উপায়ে প্লেলিস্ট সংরক্ষণ। আপনার ডাটা থাকে কেবল আপনার নিজের ফোনেই।
+                    </p>
                 </div>
             </div>
         </div>
-    </main>
+    </section>
 
-    <!-- Installation Steps Section -->
-    <section id="install-guide" class="w-full max-w-5xl mx-auto px-6 py-16 border-t border-white/5">
-        <h2 class="text-3xl font-extrabold tracking-tight text-center text-white mb-12">
-            কিভাবে <span class="text-brand-red">ইনস্টল</span> করবেন?
-        </h2>
+    <!-- Playlist Config Step-by-Step UI -->
+    <section id="how-it-works" class="py-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-500">প্লেলিস্ট যুক্ত করার নিয়মাবলী</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">সহজ ৩টি ধাপে লাইভ <br>টিভি দেখা শুরু করুন</h2>
+                <p class="text-zinc-400 text-base leading-relaxed">
+                    অ্যাপ ডাউনলোড করার পর নিচের মতো করে প্লেলিস্ট অথবা এক্সট্রিম কোড লগইন দিয়ে আপনার আইপিটিভি চ্যানেলগুলো তাৎক্ষণিকভাবে সক্রিয় করুন।
+                </p>
+
+                <div class="space-y-6 pt-4">
+                    <!-- Step 1 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-brand-600/20 border border-brand-500/40 text-brand-400 flex items-center justify-center text-sm font-bold mt-1">১</div>
+                        <div>
+                            <h4 class="text-white font-bold">লগইন স্ক্রিন সিলেক্ট করুণ</h4>
+                            <p class="text-gray-400 text-sm">অ্যাপ ওপেন করে আপনার সুবিধা মত "M3U Link Input" অথবা "Xtream Codes API" সিলেক্ট করুণ।</p>
+                        </div>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-brand-600/20 border border-brand-500/40 text-brand-400 flex items-center justify-center text-sm font-bold mt-1">২</div>
+                        <div>
+                            <h4 class="text-white font-bold">তথ্য পূরণ করুণ</h4>
+                            <p class="text-gray-400 text-sm">আপনার আইপিটিভি সেবাদাতা থেকে প্রাপ্ত URL ও পোর্ট সম্বলিত হোস্টনেম, ইউজারনেম এবং পাসওয়ার্ড বসান এবং "Save" ক্লিক করুন।</p>
+                        </div>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-brand-600/20 border border-brand-500/40 text-brand-400 flex items-center justify-center text-sm font-bold mt-1">৩</div>
+                        <div>
+                            <h4 class="text-white font-bold">উপভোগ করুন জিরো-বাফার লাইভ কন্টেন্ট</h4>
+                            <p class="text-gray-400 text-sm">কয়েকটি সেকেন্ডের মাথায় সফলভাবে আপনার ক্যাটাগরিগুলো ড্যাশবোর্ডে চলে আসবে এবং আপনি খেলা ও সিনেমা স্ট্রিমিং করতে পারবেন!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visualization of login interface card code -->
+            <div class="bg-zinc-900 border border-zinc-800 p-8 rounded-3xl relative">
+                <div class="absolute top-4 right-4 flex space-x-1.5">
+                    <span class="w-3 h-3 rounded-full bg-red-500/50"></span>
+                    <span class="w-3 h-3 rounded-full bg-yellow-500/50"></span>
+                    <span class="w-3 h-3 rounded-full bg-green-500/50"></span>
+                </div>
+                
+                <h3 class="text-white font-bold text-lg mb-6 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-brand-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg>
+                    Xtream Login Simulator
+                </h3>
+
+                <form class="space-y-4" onsubmit="event.preventDefault();">
+                    <div class="space-y-2">
+                        <label class="text-xs font-semibold text-zinc-400 uppercase">SERVER URL (PORT সহ)</label>
+                        <input type="text" readonly value="http://iptv-line.example.com:8080" class="w-full bg-zinc-950 border border-zinc-800 text-zinc-300 rounded-xl px-4 py-3 text-sm focus:outline-none">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-xs font-semibold text-zinc-400 uppercase">USERNAME</label>
+                        <input type="text" readonly value="premium_user" class="w-full bg-zinc-950 border border-zinc-800 text-zinc-300 rounded-xl px-4 py-3 text-sm focus:outline-none">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-xs font-semibold text-zinc-400 uppercase">PASSWORD</label>
+                        <input type="text" readonly value="••••••••••••••" class="w-full bg-zinc-950 border border-zinc-800 text-zinc-300 rounded-xl px-4 py-3 text-sm focus:outline-none">
+                    </div>
+                    
+                    <button type="button" class="w-full py-4 rounded-xl bg-brand-600 text-white font-bold text-sm hover:bg-brand-500 transition-colors shadow-lg shadow-brand-500/10">
+                        কানেক্ট করুন ও প্লেলিস্ট সেভ করুন
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Manual APK installation tutorial section -->
+    <section id="how-to-install" class="py-20 bg-zinc-950/60 border-t border-zinc-800/40">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white text-center mb-12">কিভাবে অ্যান্ড্রয়েডে APK ফাইল ইন্সটল করবেন?</h2>
+            
+            <div class="space-y-4">
+                <div class="bg-zinc-900 border border-zinc-800 p-5 rounded-2xl flex items-start gap-4">
+                    <span class="bg-zinc-800 text-zinc-300 font-bold w-6 h-6 rounded-full flex-shrink-0 flex items-center justify-center text-xs mt-1">1</span>
+                    <div>
+                        <h4 class="text-white font-bold text-base mb-1">ডাউনলোড সম্পূর্ণ করুন</h4>
+                        <p class="text-gray-400 text-sm">নিচে দেওয়া ডাউনলোড বাটনে ক্লিক করে APK ফাইলটি সংগ্রহ করুন। ব্রাউজারে একটি ওয়ার্নিং ও "Download Anyway" পপ-আপ আসলে "Anyway" সিলেক্ট করুন।</p>
+                    </div>
+                </div>
+
+                <div class="bg-zinc-900 border border-zinc-800 p-5 rounded-2xl flex items-start gap-4">
+                    <span class="bg-zinc-800 text-zinc-300 font-bold w-6 h-6 rounded-full flex-shrink-0 flex items-center justify-center text-xs mt-1">2</span>
+                    <div>
+                        <h4 class="text-white font-bold text-base mb-1">Unknown Sources অনুমোদন দিন</h4>
+                        <p class="text-gray-400 text-sm">Settings থেকে "Install Unknown Apps" অথবা "Allow from this source" অপশনটি সচল করুন।</p>
+                    </div>
+                </div>
+
+                <div class="bg-zinc-900 border border-zinc-800 p-5 rounded-2xl flex items-start gap-4">
+                    <span class="bg-zinc-800 text-zinc-300 font-bold w-6 h-6 rounded-full flex-shrink-0 flex items-center justify-center text-xs mt-1">3</span>
+                    <div>
+                        <h4 class="text-white font-bold text-base mb-1">ইন্সটল করে ব্যবহার শুরু করুন</h4>
+                        <p class="text-gray-400 text-sm">ডাউনলোড ফোল্ডার থেকে ফাইলটি ওপেন করে ইন্সটল করুন এবং স্পোর্টস ও মুভি উপভোগ করুন।</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download CTA Box Section with actual APK link -->
+    <section id="download" class="py-24 relative overflow-hidden bg-gradient-to-b from-[#09090b] to-[#0c0c0e]">
+        <div class="absolute inset-0 bg-brand-600/5 mix-blend-color-dodge rounded-full blur-[140px] max-w-4xl mx-auto h-72"></div>
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Step 1 -->
-            <div class="glass-panel p-8 rounded-2xl flex flex-col items-center text-center space-y-4 border border-white/5">
-                <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-brand-red font-extrabold text-xl">১</div>
-                <h3 class="text-lg font-bold text-white">APK ফাইলটি ডাউনলোড করুন</h3>
-                <p class="text-sm text-brand-grayLight">
-                    উপরে দেওয়া "ডাউনলোড করুন" বাটনে ক্লিক করে APK ফাইলটি আপনার অ্যান্ড্রয়েড মোবাইলে সেভ করুন।
-                </p>
-            </div>
-            <!-- Step 2 -->
-            <div class="glass-panel p-8 rounded-2xl flex flex-col items-center text-center space-y-4 border border-white/5">
-                <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-brand-red font-extrabold text-xl">২</div>
-                <h3 class="text-lg font-bold text-white">Unknown Sources অন করুন</h3>
-                <p class="text-sm text-brand-grayLight">
-                    আপনার ফোনের Settings > Security-তে যান এবং "Unknown Sources" থেকে অ্যাপ ইনস্টল করার অনুমতি দিন।
-                </p>
-            </div>
-            <!-- Step 3 -->
-            <div class="glass-panel p-8 rounded-2xl flex flex-col items-center text-center space-y-4 border border-white/5">
-                <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-brand-red font-extrabold text-xl">৩</div>
-                <h3 class="text-lg font-bold text-white">ইনস্টল করুন ও উপভোগ করুন</h3>
-                <p class="text-sm text-brand-grayLight">
-                    ডাউনলোড করা ফাইলটি ওপেন করে "Install" এ ট্যাপ করুন এবং ইনস্টল শেষে সরাসরি লাইভ টিভির মজা নিন!
-                </p>
+        <div class="max-w-5xl mx-auto px-6 relative z-10 text-center">
+            <div class="bg-zinc-900 border border-zinc-800/80 rounded-[32px] p-8 sm:p-12 md:p-16 space-y-8 relative overflow-hidden">
+                <div class="absolute -top-12 -left-12 w-48 h-48 bg-brand-500/10 rounded-full blur-3xl"></div>
+                <div class="absolute -bottom-12 -right-12 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl"></div>
+
+                <div class="w-20 h-20 bg-gradient-to-tr from-brand-600 to-indigo-400 text-white rounded-3xl flex items-center justify-center shadow-xl shadow-brand-500/15 mx-auto">
+                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                    </svg>
+                </div>
+
+                <div class="space-y-4">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
+                        আজই ডাউনলোড করুন <span class="gradient-text">All Tv live</span>
+                    </h2>
+                    <p class="text-zinc-400 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+                        কোনোরূপ ঝামেলা ছাড়াই আপনার কাঙ্ক্ষিত খেলা, নাটক এবং লাইভ ২৪ ঘণ্টার ভারতীয় ও স্থানীয় চ্যানেলগুলো দেখতে লেটেস্ট APK ফাইলটি ডাউনলোড করে নিন।
+                    </p>
+                </div>
+
+                <!-- Download Button (APK Link) -->
+                <div class="pt-4 flex flex-col items-center space-y-4">
+                    <a href="/app-debug.apk" download class="inline-flex items-center justify-center px-10 py-5 rounded-3xl text-lg font-bold bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white shadow-2xl shadow-brand-500/30 hover:shadow-brand-500/40 active:scale-95 transition-all duration-200 gap-3 group">
+                        <svg class="w-6 h-6 group-hover:translate-y-0.5 transition-transform duration-200" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                        এন্ড্রয়েড অ্যাপ ডাউনলোড (v3.0 APK)
+                    </a>
+                    
+                    <span class="text-xs text-zinc-500">ফাইলের সাইজ: ~২২এমবি | রিকোয়ারমেন্ট: Android 8.0+</span>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="w-full border-t border-white/5 bg-neutral-950 py-8 text-center text-xs text-brand-grayLight space-y-2 mt-12">
-        <p>&copy; 2026 All TV Live. All Rights Reserved.</p>
-        <p class="text-zinc-600">Developed with ❤️ for Entertainment Enthusiasts.</p>
+    <footer class="border-t border-zinc-900 py-12 bg-zinc-950 text-center text-sm text-zinc-500">
+        <div class="max-w-7xl mx-auto px-6 space-y-4">
+            <div class="flex items-center justify-center space-x-3 mb-4">
+                <div class="w-6 h-6 rounded-lg bg-brand-600 flex items-center justify-center">
+                    <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M7 4v16M17 4v16M3 8h18M3 16h18"/></svg>
+                </div>
+                <span class="text-white font-bold">All Tv live</span>
+            </div>
+            
+            <p>© 2026 All Tv live. All rights reserved.</p>
+            <p class="text-xs text-zinc-600">আমরা কোনো প্রকার লাইভ মিডিয়া বা স্ট্রিম হোস্ট করি না। এটি শুধুমাত্র একটি জেনারেলাইজড IPTV রিসোর্স প্লেয়ার টুল।</p>
+        </div>
     </footer>
 
 </body>
